@@ -5,6 +5,56 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Table</title>
+        <style>
+            :root {
+                font-size: 10px;
+            }
+
+            @media (min-width: 768px) {
+                :root {
+                    font-size: 16px;
+                }
+            }
+
+            #db-employees {
+                border-collapse: collapse;
+                font-size: 1.4rem;
+            }
+
+            #db-employees,
+            #db-employees th,
+            #db-employees td {
+                border: 1px solid black;
+            }
+
+            #db-employees th,
+            #db-employees td {
+                padding: 1rem;
+            }
+        </style>
     </head>
-    <body></body>
+    <body>
+        <table id="db-employees">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Place</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tejasvi</td>
+                    <td>Jammu</td>
+                </tr>
+                <tr>
+                    <td>Vaibhav</td>
+                    <td>Gazhiabad</td>
+                </tr>
+                <tr>
+                    <td>Janhavi</td>
+                    <td>Pune</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
 </html>

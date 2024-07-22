@@ -6,19 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Box model</title>
         <style>
+            body {
+                margin: 0;
+            }
+
             /* EXERCISE: Comment each property and see the difference it makes */
             div {
                 font-size: 24px;
                 width: 50%;
-                min-width: 300px; /* do not let the width drop below 300px */
-                max-width: 500px; /* do not let the width go beyond 500px */
-                height: 300px; /* defaults to "auto" and parent gets height as per content within - if height is not sufficient content will "overflow" */
+                min-width: 500px; /* do not let the width drop below 500px */
+                max-width: 700px; /* do not let the width go beyond 700px */
+                height: 200px; /* defaults to "auto" and parent gets height as per content within - if height is not sufficient content will "overflow" */
                 /* min-height, max-height */
 
                 /* padding: 10px 40px; */
                 /* 1em padding = 1 x font-size of this element */
                 /* 1% padding = 0.01 x parent element content width */
-                padding: 0.5em 1em;
+                padding: 50px 100px;
                 border: 1px solid black;
                 box-shadow: 5px -5px 2px 2px gold;
 

@@ -8,34 +8,35 @@
         <style>
             h2 {
                 color: gold;
+                font-weight: normal;
             }
 
             /* EXERCISE: Uncomment one-by-one and check (keep the rest commented) */
 
             /* Parent - child - > */
-            /* section > h2 {
+            section > h2 {
                 color: crimson;
-            } */
+            }
 
             /* Ancestor - descendant - space */
-            /* section h2 {
+            section h2 {
                 color: crimson;
-            } */
+            }
 
             /* no spaces - element satisfies all the selectors */
             /* .x.y {
-                color: crimson;
+                color: green;
             } */
 
             /* comma combinator - */
-            /* section > div > h2,
+            section > div > h2,
             section > div > h3 {
-                color: crimson;
-            } */
+                color: purple;
+            }
         </style>
     </head>
     <body>
-        <h2>Heading 1</h2>
+        <h2>Heading</h2>
 
         <section>
             <h2 class="x y">Heading within Section</h2>

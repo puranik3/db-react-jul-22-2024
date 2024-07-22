@@ -1,7 +1,7 @@
 <!-- Understand how URL is structured and form submission works -->
 <!-- label (click on label to focus on input, check/uncheck etc.), input, select, textarea, checkbox/radio -->
 <!-- normal button, submit button -->
-<!-- required, min, max, maxlength -->
+<!-- Explore: required, min, max, maxlength -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,5 +9,53 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Forms</title>
     </head>
-    <body></body>
+    <body>
+        <!-- <form action="success.html" method="post"> -->
+        <form action="success.html" method="get">
+            <!-- division element - block level element -->
+            <div>
+                <!-- always create input with label -->
+                <label>
+                    Username
+                    <input type="text" name="username" required />
+                </label>
+            </div>
+
+            <div>
+                <label for="pwd">Password</label>
+                <input type="password" name="password" id="pwd" />
+            </div>
+
+            <select name="place">
+                <option value="NDLS">New Delhi</option>
+                <option value="BOM">Mumbai</option>
+                <option value="KOL">Kolkata</option>
+                <option>Bengaluru</option>
+                <option>Chennai</option>
+            </select>
+
+            <label>
+                <input type="checkbox" checked name="" value="yes" /> Do you
+                agree to the TnC?
+            </label>
+
+            <div>
+                <label>
+                    <input type="radio" name="sport" value="tennis" /> Tennis
+                </label>
+                <label>
+                    <input type="radio" name="sport" value="cricket" />
+                    Cricket
+                </label>
+                <label>
+                    <input type="radio" name="sport" value="basketball" />
+                    Basketball
+                </label>
+            </div>
+
+            <textarea></textarea>
+
+            <button type="submit">Login</button>
+        </form>
+    </body>
 </html>

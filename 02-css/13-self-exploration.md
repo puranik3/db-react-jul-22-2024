@@ -4,3 +4,9 @@
 -   Test and font related properties (font-family, font-size, font-weight, text-decoration, using custom fonts)
 -   Overflow related properties (overflow-x, overflow-y, overflow and values hidden, auto, scroll)
 -   Position property(static, relative, absolute, fixed, sticky-top, and properties top, right, bottom, left)
+
+## References
+
+-   https://www.w3schools.com/
+-   https://developer.mozilla.org/en-US/docs/Learn/CSS
+-   YoutTube chanel by Kevin Powell
