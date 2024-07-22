@@ -10,3 +10,5 @@
 -   https://www.w3schools.com/
 -   https://developer.mozilla.org/en-US/docs/Learn/CSS
 -   YoutTube chanel by Kevin Powell
+-   https://flexboxfroggy.com/
+-   https://cssgridgarden.com/
