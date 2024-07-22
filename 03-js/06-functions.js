@@ -1,6 +1,6 @@
 console.log(sum1(12, 13)); // this will work
 
-// these functions are craeted before execution begins
+// these functions are created before execution begins
 function sum1(x, y) {
     const result = x + y;
     return result;
