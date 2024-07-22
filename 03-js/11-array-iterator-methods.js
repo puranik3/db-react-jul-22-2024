@@ -36,3 +36,8 @@ console.log(mobiles);
 console.log(namesOfMobiles);
 
 // find(), filter()
+
+// EXERCISE: Find number of [ 3, 5, 4, 3 ] - map()
+
+
+// EXERCISE (optional): (more involved): Find number of [ { name: 'One Plus Nord', numColors: 3 }, 5, 4, 3 ] - map()
