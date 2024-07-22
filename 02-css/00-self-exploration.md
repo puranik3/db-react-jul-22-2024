@@ -12,3 +12,7 @@
 -   YoutTube chanel by Kevin Powell
 -   https://flexboxfroggy.com/
 -   https://cssgridgarden.com/
+
+## Exercises
+
+-   02 - CSS Lab Guide: More exercise (last page of the guide) - Q.4
