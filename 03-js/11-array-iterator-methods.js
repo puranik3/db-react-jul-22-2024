@@ -29,7 +29,7 @@ mobiles.forEach(
 );
 
 // [ 'One Plus Nord', 'Samsung Galaxy', ...]
-// The map iterator function expects you to return a value
+// The map iterator function is expected to return a value
 const namesOfMobiles = mobiles.map(item => item.name)
 
 console.log(mobiles);
@@ -38,6 +38,15 @@ console.log(namesOfMobiles);
 // find(), filter()
 
 // EXERCISE: Find number of [ 3, 5, 4, 3 ] - map()
+const mobileColors = mobiles.map(item => item.colors.length);
+console.log(mobileColors);
 
+// EXERCISE (optional): (more involved): Find number of [ { name: 'One Plus Nord', numColors: 3 }, ... ] - map()
+const mobileColorsWithNames = mobiles.map(item => {
+    return {
+        name: item.name,
+        numColors: item.colors.length
+    };
+});
 
-// EXERCISE (optional): (more involved): Find number of [ { name: 'One Plus Nord', numColors: 3 }, 5, 4, 3 ] - map()
+console.log(mobileColorsWithNames);
