@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -19,10 +20,11 @@ const appProps = {
 // In class-based components, and you want to drill props {...this.appProps}
 root.render(
   <React.StrictMode>
-    <Application
-      {...appProps}
-    />
-
+    <BrowserRouter>
+      <Application
+        {...appProps}
+      />
+    </BrowserRouter>
   </React.StrictMode>
 )
 

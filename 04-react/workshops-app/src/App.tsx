@@ -1,4 +1,6 @@
 import HomePage from './pages/HomePage';
+import WorkshopsListPage from './pages/WorkshopsListPage';
+import { Routes, Route } from 'react-router-dom';
 
 // {
 //   title: "Workshops App",
@@ -15,7 +17,16 @@ const App = ( props : IAppProps ) => {
 
   return (
     <div className="container my-5">
-      <HomePage title={props.title} />
+      <Routes>
+        <Route
+          element={<HomePage title={props.title} />}
+          path="/"
+        />
+        <Route
+          element={<WorkshopsListPage />} 
+          path="/workshops"
+        />
+      </Routes>
     </div>
   );
 };
