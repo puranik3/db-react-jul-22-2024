@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
+
 import { getWorkshops } from "../services/workshops";
 import type { IWorkshop } from "../services/workshops";
 
@@ -30,7 +32,7 @@ const WorkshopsList = () => {
         },
         // [] // run this side-effect when the component shows up on the screen (after first render only)
         // if you dont provide a second argument (array) - the side-effect executes on every render
-        [ page ] // run this side-effect when the component shows up on the screen, and also when the variables mentioned change during a rendering
+        [page] // run this side-effect when the component shows up on the screen, and also when the variables mentioned change during a rendering
     );
 
     function previous() {
@@ -45,25 +47,40 @@ const WorkshopsList = () => {
         setPage(page + 1);
     }
 
+    // toggling description
+    const [show, setShow] = useState(false);
+
+    function toggleDescription() {
+        setShow(!show);
+    }
+
     // A Fragment - <></> is simply used to group elements
     return (
         <>
             <h1>List of workshops</h1>
             <hr />
             <div>Numbers of workshops = {workshops.length}</div>
-            <div>You are viewing page {page}</div>
-            <div>
+
+            <div className="my-4">
+                <div>You are viewing page {page}</div>
                 <button
                     onClick={previous}
                     className="btn btn-sm btn-primary me-2"
                 >
                     Previous
                 </button>
-                <button onClick={next} className="btn btn-sm btn-primary">
+                <button onClick={next} className="btn btn-sm btn-primary me-4">
                     Next
                 </button>
+                <button
+                    onClick={toggleDescription}
+                    className="btn btn-sm btn-primary"
+                >
+                    Toggle description
+                </button>
             </div>
-            <ol>
+
+            <ListGroup>
                 {
                     // [
                     //     <li>Angular</li>,
@@ -72,10 +89,21 @@ const WorkshopsList = () => {
                     //     ,,,,
                     // ]
                     workshops.map((workshopObj) => (
-                        <li key={workshopObj.id}>{workshopObj.name}</li>
+                        <ListGroupItem key={workshopObj.id}>
+                            {workshopObj.name}
+
+                            {/* For if-else rendering use ? : (ternary conditional operator) */}
+                            {show === true && (
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: workshopObj.description,
+                                    }}
+                                ></div>
+                            )}
+                        </ListGroupItem>
                     ))
                 }
-            </ol>
+            </ListGroup>
         </>
     );
 };
