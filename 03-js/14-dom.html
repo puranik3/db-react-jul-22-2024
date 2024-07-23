@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dynamic page</title>
+    </head>
+    <body>
+        <input type="text" id="name" placeholder="John Doe" />
+
+        <span>Hello, world!</span>
+        <button>Change name</button>
+
+        <script>
+            console.dir(document.querySelector("#name"));
+            // document.querySelectorAll(".x"); // multiple DOM node
+
+            // DOM nodes - objects that represent HTML elements
+            const nameEl = document.getElementById("name");
+            const spanEl = document.querySelector("span");
+            const button = document.querySelector("button");
+
+            button.addEventListener("click", function () {
+                // event listener / event handlers will be called by the browser
+                console.log("clicked");
+
+                console.log(nameEl.value);
+
+                const name = nameEl.value;
+
+                // Explore innerText
+                spanEl.innerHTML = `
+                    Hello,
+                    <strong>${name}</strong>
+                `;
+            });
+        </script>
+    </body>
+</html>

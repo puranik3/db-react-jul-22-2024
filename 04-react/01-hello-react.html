@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hello React</title>
+    </head>
+
+    <body>
+        <!--
+            <div id="message">
+                Hello <strong>React</strong>
+            </div>
+        -->
+        <div id="root"></div>
+
+        <!-- React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.development.js"></script>
+
+        <!-- React DOM -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.development.min.js"></script>
+
+        <!-- Babel compiler for JSX and other JS features -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>
+
+        <script type="text/babel">
+            // Architect for UI is React
+            // React element is an object
+            // const element = React.createElement(
+            //     "div",
+            //     {
+            //         id: "message",
+            //     },
+            //     'Hello ',
+            //     React.createElement(
+            //         'strong',
+            //         {}, // can also be null
+            //         'React'
+            //     )
+            // );
+
+            // React element but using an HTML-like syntax called "JSX"
+            const element = <div id="message">
+                Hello <strong>React</strong>
+            </div>
+
+            // Builder for the UI is ReactDOM
+            const root = ReactDOM.createRoot( document.getElementById( 'root' ) );
+            root.render( element );
+        </script>
+    </body>
+</html>
