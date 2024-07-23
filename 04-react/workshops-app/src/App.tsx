@@ -1,4 +1,5 @@
 import HomePage from './pages/HomePage';
+
 // {
 //   title: "Workshops App",
 //   subtitle: "Find workshops nearby"

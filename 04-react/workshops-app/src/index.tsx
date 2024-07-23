@@ -10,11 +10,17 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const appProps = {
+  title: "Workshops Application",
+  subtitle: "Find workshops nearby"
+};
+
+// props spread operator - {...appProps} -> properties of the appProps object are sent as props
+// In class-based components, and you want to drill props {...this.appProps}
 root.render(
   <React.StrictMode>
     <Application
-      title="Workshops Application"
-      subtitle="Find workshops nearby"
+      {...appProps}
     />
 
   </React.StrictMode>
