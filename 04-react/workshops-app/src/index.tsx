@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 // defult export can be imported with any name
 import Application from './App';
 
+import './services/configureAxios';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
