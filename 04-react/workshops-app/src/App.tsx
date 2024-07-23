@@ -1,3 +1,4 @@
+import HomePage from './pages/HomePage';
 // {
 //   title: "Workshops App",
 //   subtitle: "Find workshops nearby"
@@ -12,10 +13,8 @@ const App = ( props : IAppProps ) => {
   console.log( props );
 
   return (
-    <div>
-      <h1>{props.title}</h1>
-      <hr />
-      {/* add subttile in h2 */}
+    <div className="container my-5">
+      <HomePage title={props.title} />
     </div>
   );
 };
