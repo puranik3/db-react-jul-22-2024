@@ -3,12 +3,12 @@
 //   subtitle: "Find workshops nearby"
 // }
 
-interface Props {
+interface IAppProps {
   title: string,
   subtitle: string
 }
 
-const App = ( props : Props ) => {
+const App = ( props : IAppProps ) => {
   console.log( props );
 
   return (

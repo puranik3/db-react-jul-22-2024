@@ -12,7 +12,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Application title="Workshops App" subtitle="Find workshops nearby" />
+    <Application
+      title="Workshops App"
+      subtitle="Find workshops nearby"
+    />
     <Application title="GMail" subtitle="All your email safe abd secure" />
     <Application title="Teams" subtitle="Chat, conference and share files" />
   </React.StrictMode>
