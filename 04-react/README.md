@@ -7,3 +7,4 @@
 -   Reduces the code we need to write
 -   Components - A small customizable, reusable piece of the UI
     -   convenient "pseudo HTML elements"
+- We work with data, update data, and UI updates are taken care by React
