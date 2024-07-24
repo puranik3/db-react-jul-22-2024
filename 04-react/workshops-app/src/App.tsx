@@ -1,7 +1,9 @@
-import Menu from './components/Menu';
-import HomePage from './pages/HomePage';
-import WorkshopsListPage from './pages/WorkshopsListPage';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
+
+import Menu from "./components/Menu";
+import HomePage from "./pages/HomePage";
+import WorkshopsListPage from "./pages/WorkshopsListPage";
+import WorkshopDetailsPage from "./pages/WorkshopDetailsPage";
 
 // {
 //   title: "Workshops App",
@@ -9,37 +11,38 @@ import { Routes, Route } from 'react-router-dom';
 // }
 
 interface IAppProps {
-  title: string,
-  subtitle: string
+    title: string;
+    subtitle: string;
 }
 
-const App = ( props : IAppProps ) => {
-  console.log( props );
+const App = (props: IAppProps) => {
+    console.log(props);
 
-  return (
-    <>
-      <Menu />
+    return (
+        <>
+            <Menu />
 
-      <div className="container my-5">  
-        <Routes>
-          <Route
-            element={<HomePage title={props.title} />}
-            path="/"
-          />
-          <Route
-            element={<WorkshopsListPage />} 
-            path="/workshops"
-          />
-        </Routes>
-      </div>
-    </>
-  );
+            <div className="container my-5">
+                <Routes>
+                    <Route
+                        element={<HomePage title={props.title} />}
+                        path="/"
+                    />
+                    <Route element={<WorkshopsListPage />} path="/workshops" />
+                    <Route
+                        element={<WorkshopDetailsPage />}
+                        path="/workshops/:id"
+                    />
+                </Routes>
+            </div>
+        </>
+    );
 };
 
 // there can be only 1 default export in a module (file)
 export default App;
 
-// named export 
+// named export
 // export {
 //   App
 // }

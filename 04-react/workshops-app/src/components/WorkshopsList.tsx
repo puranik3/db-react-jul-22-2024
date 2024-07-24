@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import { getWorkshops } from "../services/workshops";
 import type { IWorkshop } from "../services/workshops";
@@ -90,7 +91,9 @@ const WorkshopsList = () => {
                     // ]
                     workshops.map((workshopObj) => (
                         <ListGroupItem key={workshopObj.id}>
-                            {workshopObj.name}
+                            <Link to={"/workshops/" + workshopObj.id}>
+                                {workshopObj.name}
+                            </Link>
 
                             {/* For if-else rendering use ? : (ternary conditional operator) */}
                             {show === true && (
