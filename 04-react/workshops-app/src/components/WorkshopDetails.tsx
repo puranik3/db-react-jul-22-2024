@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
-import { Alert, Image, Spinner } from "react-bootstrap";
+import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Alert, Button, Image, Spinner } from "react-bootstrap";
 
 import SessionsList from "./SessionsList";
 
@@ -80,6 +80,19 @@ const WorkshopDetails = () => {
             )}
 
             <div className="mt-5">
+                <Link to="">
+                    <Button variant="primary" size="sm" className="me-2">
+                        Sessions list
+                    </Button>
+                </Link>
+                <Link to="add">
+                    <Button variant="primary" size="sm" className="me-2">
+                        Add a session
+                    </Button>
+                </Link>
+            </div>
+
+            <div className="mt-4">
                 <Routes>
                     <Route path="" element={<SessionsList />} />
                     <Route path="add" element={<AddSession />} />
