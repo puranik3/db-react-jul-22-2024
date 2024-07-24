@@ -50,9 +50,8 @@
             // It does not modify its own arguments
             // The returned value can be predicted from the input
             // These rules help maintain consistency of data (We can track changes to data), and easily debug
+            // State is an "immutable object tree"
             const counterReducer = (state = initialState, action) => {
-                let newState;
-
                 // console.log("state = ", state);
                 // console.log("action = ", action);
 
@@ -72,8 +71,6 @@
                     default:
                         return state;
                 }
-
-                return newState; // state
             };
 
             // A store maintains global data
@@ -87,6 +84,8 @@
                 store.dispatch({
                     // this message object is called "action"
                     type: "counter/decrement",
+                    // can have extra properties as well
+                    // payload: {}
                 });
             }
 

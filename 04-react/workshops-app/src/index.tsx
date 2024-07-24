@@ -1,34 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
-// defult export can be imported with any name
-import Application from './App';
+// default export can be imported with any name
+import Application from "./App";
+import store from "./store";
 
-import './services/configureAxios';
+import "./services/configureAxios";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById("root") as HTMLElement
 );
 
 const appProps = {
-  title: "Workshops Application",
-  subtitle: "Find workshops nearby"
+    title: "Workshops Application",
+    subtitle: "Find workshops nearby",
 };
 
 // props spread operator - {...appProps} -> properties of the appProps object are sent as props
 // In class-based components, and you want to drill props {...this.appProps}
+// The "Provider" makes the store avilable to all the "views"
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Application
-        {...appProps}
-      />
-    </BrowserRouter>
-  </React.StrictMode>
-)
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <Application {...appProps} />
+            </BrowserRouter>
+        </Provider>
+    </React.StrictMode>
+);
 
 // root.render(
 //   <React.StrictMode>
