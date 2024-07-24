@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import { Alert, Image, Spinner } from "react-bootstrap";
+
+import SessionsList from "./SessionsList";
 
 import { getWorkshopById } from "../services/workshops";
 import type { IWorkshop } from "../services/workshops";
+import AddSession from "./AddSession";
 
 // interface IParams {
 //     workshopId: string;
@@ -75,6 +78,13 @@ const WorkshopDetails = () => {
                     </div>
                 </>
             )}
+
+            <div className="mt-5">
+                <Routes>
+                    <Route path="" element={<SessionsList />} />
+                    <Route path="add" element={<AddSession />} />
+                </Routes>
+            </div>
         </div>
     );
 };
