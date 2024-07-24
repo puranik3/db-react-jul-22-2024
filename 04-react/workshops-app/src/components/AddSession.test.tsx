@@ -9,7 +9,7 @@ describe("AddSession component", () => {
         const buttonEl = screen.getByTestId("btn-submit");
 
         // action
-        fireEvent.change(sequenceIdEl, "");
+        fireEvent.change(sequenceIdEl, { target: { value: "" } });
         fireEvent.click(buttonEl);
 
         // assert
