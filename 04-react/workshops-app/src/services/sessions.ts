@@ -4,7 +4,7 @@ import axios from "axios";
  * sessions related API calls go in here
  */
 
-// you code, export etc..
+// you code to get the list of session (for SessionsList component), export etc..
 // ....
 
 interface ISession {

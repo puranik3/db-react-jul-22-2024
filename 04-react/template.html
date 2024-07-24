@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        />
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <!-- React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.development.js"></script>
+
+        <!-- React DOM -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.development.min.js"></script>
+
+        <!-- Babel compiler for JSX and other JS features -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>
+
+        <script type="text/babel">
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render();
+        </script>
+    </body>
+</html>

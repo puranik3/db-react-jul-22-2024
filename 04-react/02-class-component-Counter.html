@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        />
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <!-- React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.development.js"></script>
+
+        <!-- React DOM -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.development.min.js"></script>
+
+        <!-- Babel compiler for JSX and other JS features -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>
+
+        <script type="text/babel">
+            // props -> this.props (object with all the props)
+            class Counter extends React.Component {
+                state = {
+                    value: this.props.initialValue,
+                    title: "Counter app",
+                };
+
+                // use arrow function method syntax for event handler
+                decrement = () => {
+                    this.setState({
+                        value: this.state.value - 1,
+                    });
+                };
+
+                increment = () => {
+                    this.setState({
+                        value: this.state.value + 1,
+                    });
+                };
+
+                render() {
+                    return (
+                        <div className="container">
+                            <h1>{this.state.title}</h1>
+                            <hr />
+                            <button
+                                className="btn btn-primary btn-sm"
+                                onClick={this.decrement}
+                            >
+                                -
+                            </button>
+                            {this.state.value}
+                            <button
+                                className="btn btn-primary btn-sm"
+                                onClick={this.increment}
+                            >
+                                +
+                            </button>
+                        </div>
+                    );
+                }
+
+                // is called AFTER the first render and never again
+                componentDidMount() {
+                    console.log("cdm");
+                }
+
+                // called AFTER every state / prop change
+                componentDidUpdate(oldProps, oldState) {
+                    console.log("cdu");
+                }
+
+                // called when the component goes off the screen
+                componentWillUnmount() {
+                    console.log("cwu");
+                }
+            }
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(<Counter initialValue={100} />);
+        </script>
+    </body>
+</html>
