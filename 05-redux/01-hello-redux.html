@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        />
+    </head>
+
+    <body>
+        <div id="root">
+            <button className="btn btn-primary btn-sm" onclick="decrement()">
+                -
+            </button>
+            <span id="counter">0</span>
+            <button className="btn btn-primary btn-sm" onclick="increment()">
+                +
+            </button>
+        </div>
+
+        <!-- React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.development.js"></script>
+
+        <!-- React DOM -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.development.min.js"></script>
+
+        <!-- Babel compiler for JSX and other JS features -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>
+
+        <!-- Redux -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.js"></script>
+
+        <script>
+            // Redux
+            // import { createStore } from "https://cdnjs.cloudflare.com/ajax/libs/redux/5.0.1/redux.legacy-esm.min.js";
+
+            const initialState = {
+                value: 0,
+                x: 100,
+                theme: "dark",
+            };
+
+            // A reducer
+            // A reducer should be a "pure function"
+            // Conditions for being pure...
+            // It does not use global variables, methods etc.
+            // It does not modify its own arguments
+            // The returned value can be predicted from the input
+            // These rules help maintain consistency of data (We can track changes to data), and easily debug
+            const counterReducer = (state = initialState, action) => {
+                let newState;
+
+                // console.log("state = ", state);
+                // console.log("action = ", action);
+
+                switch (action.type) {
+                    case "counter/decrement":
+                        // because Redux function should be pure, we SHOULD NOT modify the incoming state
+                        return {
+                            // we always create a new state object
+                            ...state, // object spread operators
+                            value: state.value - 1,
+                        };
+                    case "counter/increment":
+                        return {
+                            ...state,
+                            value: state.value + 1,
+                        };
+                    default:
+                        return state;
+                }
+
+                return newState; // state
+            };
+
+            // A store maintains global data
+            // when the store is created below, it calls the reducer function - state -> undefined
+            const store = Redux.createStore(counterReducer);
+
+            console.log(store);
+
+            // The "view" can dispatch "actions" to the store -> message passed to the store to change the state
+            function decrement() {
+                store.dispatch({
+                    // this message object is called "action"
+                    type: "counter/decrement",
+                });
+            }
+
+            function increment() {
+                store.dispatch({
+                    // this message object is called "action"
+                    type: "counter/increment",
+                });
+            }
+
+            // function to update the "view"
+            function render() {
+                document.getElementById("counter").innerHTML =
+                    "" + store.getState().value;
+            }
+
+            // Hey store, whenever you change state, please call render
+            store.subscribe(render);
+        </script>
+    </body>
+</html>

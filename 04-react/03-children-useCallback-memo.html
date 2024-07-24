@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        />
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <!-- React -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.development.js"></script>
+
+        <!-- React DOM -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.development.min.js"></script>
+
+        <!-- Babel compiler for JSX and other JS features -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.10/babel.min.js"></script>
+
+        <script type="text/babel">
+            // React.useMemo() -> hook to optimize unnecessary recalculations in components
+
+            // with React.memo() used, the component re-renders only when it receives a new value for some prop
+            const PanelHeading = React.memo(({ heading, toggle }) => {
+                console.log("PanelHeading");
+
+                return (
+                    <div className="p-2 bg-dark text-light" onClick={toggle}>
+                        {heading}
+                    </div>
+                );
+            });
+
+            const PanelBody = ({ children, show }) => {
+                console.log("PanelBody");
+                // const [show, setShow] = useState( true );
+
+                return show ? <div className="p-2">{children}</div> : null;
+            };
+
+            // [ <p>React is a frontend framework</p>, <p>It was created at Facebook</p> ]
+            /**
+             * When the Parent component (Panel) renders, the children components render (PanelHeading, PanelBody)
+             */
+            const Panel = ({ heading, children }) => {
+                console.log("Panel");
+
+                const [show, setShow] = React.useState(true);
+
+                // const toggle = () => setShow(!show);
+                // whenever we have a callback prop (function as a prop), we have to be careful to avoid re-rendering on the child (which uses that prop)
+                // toggle is a local variable (local function) - it gets recreated whenever Panel function runs (i.e. it re-renders)
+                // With useCallback(), the function f gets recreated only when one of the variables in the dependency array changes
+                const toggle = React.useCallback(
+                    () => setShow((s) => !s), // f
+                    [setShow]
+                );
+
+                return (
+                    <div className="border border-dark">
+                        <PanelHeading heading={heading} toggle={toggle} />
+                        {/*<div>{children}</div>*/}
+                        <PanelBody show={show}>{children}</PanelBody>
+                    </div>
+                );
+            };
+
+            const root = ReactDOM.createRoot(document.getElementById("root"));
+            root.render(
+                <Panel heading="What is React?">
+                    <p>React is a frontend framework</p>
+                    <p>It was created at Facebook</p>
+                </Panel>
+            );
+        </script>
+    </body>
+</html>
