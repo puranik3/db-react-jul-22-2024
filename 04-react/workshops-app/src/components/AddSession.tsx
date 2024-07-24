@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { addSession as addSessionSvc } from "../services/sessions";
 
 interface IProps {
     workshopId: number;
@@ -16,14 +17,42 @@ const AddSession = ({ workshopId }: IProps) => {
     const [level, setLevel] = useState("");
     const [abstract, setAbstract] = useState("");
 
-    function addSession(event: FormEvent) {
+    const [sequenceIdError, setSequenceIdError] = useState("");
+
+    // react-hook-form / Formik for validations
+
+    function validateSequenceId() {
+        if (sequenceId.trim() === "") {
+            setSequenceIdError("Sequence ID is required");
+            return false;
+        }
+
+        const numberPat = /^[1-9][0-9]+$/;
+
+        if (numberPat.test(sequenceId.trim()) === false) {
+            setSequenceIdError("Sequence ID should be a number");
+            return false;
+        }
+
+        // no error
+        setSequenceIdError("");
+
+        return true;
+    }
+
+    function validateForm() {
+        // actually we need to collect the return from ALL validations functions, and if all are true, return true, else false
+        return validateSequenceId();
+    }
+
+    async function addSession(event: FormEvent) {
         event.preventDefault();
 
-        const newWorkshop = {
+        const newSession = {
             // workshopId: workshopId
             // sequenceId: sequenceId
             workshopId,
-            sequenceId: +sequenceId,
+            sequenceId: +sequenceId.trim(),
             name,
             speaker,
             duration: +duration,
@@ -32,9 +61,20 @@ const AddSession = ({ workshopId }: IProps) => {
             upvoteCount: 0,
         };
 
-        console.log(newWorkshop);
+        console.log(newSession);
+
+        const isValid = validateForm();
 
         // ready to send this to the backend
+        if (isValid) {
+            try {
+                const data = await addSessionSvc(newSession);
+                console.log(data);
+                alert("Successfully added");
+            } catch (error) {
+                alert((error as Error).message);
+            }
+        }
     }
 
     return (
@@ -53,6 +93,14 @@ const AddSession = ({ workshopId }: IProps) => {
                         value={sequenceId}
                         onChange={(event) => setSequenceId(event.target.value)}
                     />
+                    {
+                        <div
+                            className="text-danger"
+                            style={{ fontSize: "12px" }}
+                        >
+                            {sequenceIdError}
+                        </div>
+                    }
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="name">
