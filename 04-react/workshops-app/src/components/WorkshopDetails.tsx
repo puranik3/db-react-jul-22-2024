@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Alert, Spinner } from "react-bootstrap";
+import { Alert, Image, Spinner } from "react-bootstrap";
 
 import { getWorkshopById } from "../services/workshops";
 import type { IWorkshop } from "../services/workshops";
@@ -47,6 +47,32 @@ const WorkshopDetails = () => {
                 <>
                     <h1>{workshop.name}</h1>
                     <hr />
+                    <div className="row">
+                        {" "}
+                        {/* Row */}
+                        {/* xs, sm, md, lg, xl, xxl */}
+                        <div className="col-12 col-sm-6 col-md-4">
+                            {" "}
+                            {/* Col */}
+                            <Image
+                                src={workshop.imageUrl}
+                                alt={workshop.name}
+                                fluid
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-8">
+                            <div className="mb-3">
+                                {workshop.location.address},{" "}
+                                {workshop.location.city},{" "}
+                                {workshop.location.state}
+                            </div>
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: workshop.description,
+                                }}
+                            ></div>
+                        </div>
+                    </div>
                 </>
             )}
         </div>
