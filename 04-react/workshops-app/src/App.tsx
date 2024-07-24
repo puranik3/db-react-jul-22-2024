@@ -31,7 +31,7 @@ const App = (props: IAppProps) => {
                     <Route element={<WorkshopsListPage />} path="/workshops" />
                     <Route
                         element={<WorkshopDetailsPage />}
-                        path="/workshops/:id"
+                        path="/workshops/:workshopId"
                     />
                 </Routes>
             </div>
