@@ -156,7 +156,11 @@ const AddSession = ({ workshopId }: IProps) => {
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button
+                    variant="primary"
+                    type="submit"
+                    data-testid="btn-submit"
+                >
                     Submit
                 </Button>
             </Form>
